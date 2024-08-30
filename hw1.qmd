@@ -6,7 +6,7 @@ format: html
 ---
 Link to my [github]("https://github.com/nick-kimm/Problem-Set-1") repository
 
-Looked up some functions and syntax online to answer some questions. Ex. Syntax of if statement inside for loop  
+Looked up some functions and syntax online to answer some questions. Ex. Syntax of if statement inside for loop. 
 
 ##Problem 1
 
@@ -64,10 +64,41 @@ count/178*100
 The percentage of wines that had a higher content of Proanthocyanins compared to Ash was 8.4%
 
 Part d: Create a table identifying the average value of each variable, providing one row for the overall average, and one row per class with class averages.
-```{r}
 
+Finding values for Overall Averages
+```{r}
+overall_avgs = list()
+
+for (x in 1:14){
+  overall_avgs[x] = mean(wine[,x])
+}
 ```
 
+Finding averages for each Wine Type respectively
+```{r}
+c1_avgs = list()
+
+for (x in 2:14){
+  c1_avgs[x] = mean(wine[1:59,x])
+}
+
+c2_avgs = list()
+for (x in 2:14){
+  c2_avgs[x] = mean(wine[60:131,x])
+}
+
+c3_avgs = list()
+
+for (x in 2:14){
+  c3_avgs[x] = mean(wine[131:178,x])
+}
+```
+
+Matrix to form data is shape we want
+````{r}
+matrix(data = c(overall_avgs[2:14],c1_avgs[2:14],c2_avgs[2:14],c3_avgs[2:14]),nrow=4, ncol=13,
+       dimnames=list(c("Overall Avg", "Type 1 Avg", "Type 2 Avg", "Type 3 Avg"),wine_names[2:14]))
+```
 Part e: Carry out a series of t-tests to examine whether the level of phenols differs across the three classes. Present the R output and interpret the results.
 ```{r}
 
