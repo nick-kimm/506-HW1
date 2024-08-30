@@ -6,6 +6,8 @@ format: html
 ---
 Link to my [github]("https://github.com/nick-kimm/Problem-Set-1") repository
 
+Looked up some functions and syntax online to answer some questions. Ex. Syntax of if statement inside for loop  
+
 ##Problem 1
 
 Part a: Loading data
@@ -31,5 +33,30 @@ cor(wine$Alchohol,wine$`Color Intensity`)
 ```
 The correlation between these two variables is 54.64%
 
-Q2. 
+Q2. Which class has the highest correlation? Which has the lowest?
+```{r}
+
+```
+
+Q3. What is the alcohol content of the wine with the highest color intensity?
+```{r}
+max(wine$`Color Intensity`)
+```
+
+Q4. What percentage of wines had a higher content of proanthocyanins compare to ash?
+```{r}
+count = 0
+
+for (x in 1:length(wine$`Wine Type`)){
+  if (wine[x,10] > wine[x,4]){
+    count = 1+count
+  }
+}
+
+count/178*100
+```
+The percentage of wines that had a higher content of Proanthocyanins compared to Ash was 8.4%
+
+
+
 
