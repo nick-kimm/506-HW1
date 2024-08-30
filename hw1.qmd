@@ -8,18 +8,28 @@ Link to my [github]("https://github.com/nick-kimm/Problem-Set-1") repository
 
 ##Problem 1
 
-Loading data
+Part a: Loading data
 ```{r}
 wine <- read.csv("/Users/nicholaskim/Documents/STAT 506/hw1/wine.data",header = FALSE)
 
 wine_names <- list('Wine Type','Alchohol','Malic Acid','Ash','Alcalinity of Ash','Magnesium','Total Phenols','Flavanoids','Nonflavanoid Phenols','Proanthocyanins','Color Intensity','Hue','OD280/OD315','Proline' )
 
 colnames(wine) <- wine_names
+
+wine
 ```
 
-Checking if count of wine type matches that noted in wine_name text file
+Part b: Checking if count of wine type matches that noted in wine_name text file
 ```{r}
 as.data.frame(table(wine$`Wine Type`))
 ```
-Can verify it does!
+From doc we expect to see 59 for Type 1, 71 for Type 2, and 48 for Type 3. From table above we can see it matches!
+
+Part c: Q1. What is the correlation b/t alcohol and color intensity?
+```{r}
+cor(wine$Alchohol,wine$`Color Intensity`)
+```
+The correlation between these two variables is 54.64%
+
+Q2. 
 
