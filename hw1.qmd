@@ -40,8 +40,14 @@ Q2. Which class has the highest correlation? Which has the lowest?
 
 Q3. What is the alcohol content of the wine with the highest color intensity?
 ```{r}
-max(wine$`Color Intensity`)
+for (x in 1:length(wine$`Wine Type`)){
+  if (wine[x,11] == max(wine$`Color Intensity`)){
+    alc = wine[x,2]
+  }
+}
+alc
 ```
+The alcohol content of the wine w/ the highest Color Intensity is 14.34%.
 
 Q4. What percentage of wines had a higher content of proanthocyanins compare to ash?
 ```{r}
@@ -57,6 +63,15 @@ count/178*100
 ```
 The percentage of wines that had a higher content of Proanthocyanins compared to Ash was 8.4%
 
+Part d: Create a table identifying the average value of each variable, providing one row for the overall average, and one row per class with class averages.
+```{r}
 
+```
+
+Part e: Carry out a series of t-tests to examine whether the level of phenols differs across the three classes. Present the R output and interpret the results.
+```{r}
+
+```
+##Problem 2
 
 
