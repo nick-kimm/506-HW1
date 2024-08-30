@@ -17,12 +17,9 @@ wine_names <- list('Wine Type','Alchohol','Malic Acid','Ash','Alcalinity of Ash'
 colnames(wine) <- wine_names
 ```
 
-
-You can add options to executable code like this 
-
+Checking if count of wine type matches that noted in wine_name text file
 ```{r}
-#| echo: false
-2 * 2
+as.data.frame(table(wine$`Wine Type`))
 ```
+Can verify it does!
 
-The `echo: false` option disables the printing of code (only output is displayed).
