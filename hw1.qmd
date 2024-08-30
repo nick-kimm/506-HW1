@@ -1,0 +1,28 @@
+---
+title: "Problem Set 1"
+author: Nicholas Kim
+format: html
+
+---
+Link to my [github]("https://github.com/nick-kimm/Problem-Set-1") repository
+
+##Problem 1
+
+Loading data
+```{r}
+wine <- read.csv("/Users/nicholaskim/Documents/STAT 506/hw1/wine.data",header = FALSE)
+
+wine_names <- list('Wine Type','Alchohol','Malic Acid','Ash','Alcalinity of Ash','Magnesium','Total Phenols','Flavanoids','Nonflavanoid Phenols','Proanthocyanins','Color Intensity','Hue','OD280/OD315','Proline' )
+
+colnames(wine) <- wine_names
+```
+
+
+You can add options to executable code like this 
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
