@@ -35,8 +35,17 @@ The correlation between these two variables is 54.64%
 
 Q2. Which class has the highest correlation? Which has the lowest?
 ```{r}
+#Color Intensity
+cor(wine[1:59,11],wine[1:59,1])
+cor(wine[60:131,11],wine[60:131,1])
+cor(wine[132:178,11],wine[132:178,1])
 
+#Alchohol
+cor(wine[1:59,2],wine[1:59,1])
+cor(wine[60:131,2],wine[60:131,1])
+cor(wine[132:178,2],wine[132:178,1])
 ```
+The Class with the highest correlation for both Color Intensity and Alchohol is Class 2 while the lowest is both Class 1 and 3 equally.
 
 Q3. What is the alcohol content of the wine with the highest color intensity?
 ```{r}
@@ -90,19 +99,41 @@ for (x in 2:14){
 c3_avgs = list()
 
 for (x in 2:14){
-  c3_avgs[x] = mean(wine[131:178,x])
+  c3_avgs[x] = mean(wine[132:178,x])
 }
 ```
 
 Matrix to form data is shape we want
 ````{r}
-matrix(data = c(overall_avgs[2:14],c1_avgs[2:14],c2_avgs[2:14],c3_avgs[2:14]),nrow=4, ncol=13,
+matrix(d = c(overall_avgs[2:14],c1_avgs[2:14],c2_avgs[2:14],c3_avgs[2:14]),nrow=4, ncol=13,
        dimnames=list(c("Overall Avg", "Type 1 Avg", "Type 2 Avg", "Type 3 Avg"),wine_names[2:14]))
 ```
 Part e: Carry out a series of t-tests to examine whether the level of phenols differs across the three classes. Present the R output and interpret the results.
-```{r}
 
+T-test for Wine Type 1
+```{r}
+p_avg = mean(wine[,7])
+
+t.test(wine[1:59,7],mu=p_avg)
 ```
+T-test Wine Type 2
+```{r}
+t.test(wine[60:131,7],mu=p_avg)
+```
+T-test Wine Type 3
+```{r}
+t.test(wine[132:178,7],mu=p_avg)
+```
+
+
 ##Problem 2
+
+
+
+
+
+
+
+
 
 
