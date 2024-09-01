@@ -157,7 +157,76 @@ nrow(res_ask_man)
 Part d: Assume no one starts working before age 18. Eliminate any rows for which their age, years of experience in their field, and years of experience total are impossible. Again, confirm the number of observations. (Hint: Making these variables factor may make your life easier.)
 
 ```{r}
-```
+#before restriction
+print("b/f restriction:") 
+nrow(ask_man)
 
+#after restriction
+true_index = list() #getting list of indexs that match the condition we want
+
+for (i in 1:nrow(ask_man)){
+  if (ask_man[i,2]=="18-24"){
+    if (ask_man[i,15]=="5-7 years" & ask_man[i,14]=="5-7 years"){
+      true_index[i] = i
+    }
+  }
+  else if (ask_man[i,2]=="25-34"){
+    if (ask_man[i,15]=="11 - 20 years" & ask_man[i,14]=="11-20 years"){
+      true_index[i] = i
+    }
+    else if (ask_man[i,15]=="5-7 years" & ask_man[i,14]=="11-20 years"){
+      true_index[i] = i
+    }
+    else if (ask_man[i,15]=="5-7 years" & ask_man[i,14]=="5-7 years"){
+      true_index[i] = i
+    }
+  }
+  else if (ask_man[i,2]=="35-44"){
+    if (ask_man[i,15]=="21 - 30 years" & ask_man[i,14]=="21-30 years"){
+      true_index[i] = i
+    }
+    else if (ask_man[i,15]=="11-20 years" & ask_man[i,14]=="21-30 years"){
+      true_index[i] = i
+    }
+    else if (ask_man[i,15]=="11-20 years" & ask_man[i,14]=="11-20 years"){
+      true_index[i] = i
+    }
+  }
+  else if (ask_man[i,2]=="45-54"){
+    if (ask_man[i,15]=="31 - 40 years" & ask_man[i,14]=="31-40 years"){
+      true_index[i] = i
+    }
+    else if (ask_man[i,15]=="21-30 years" & ask_man[i,14]=="31-40 years"){
+      true_index[i] = i
+    }
+    else if (ask_man[i,15]=="21-30 years" & ask_man[i,14]=="21-30 years"){
+      true_index[i] = i
+    }
+  }
+  else if (ask_man[i,2]=="55-64"){
+    if (ask_man[i,15]=="41 years or more" & ask_man[i,14]=="41 years or more"){
+      true_index[i] = i
+    }
+    else if (ask_man[i,15]=="31-40 years" & ask_man[i,14]=="41 years or more"){
+      true_index[i] = i
+    }
+    else if (ask_man[i,15]=="31-40 years" & ask_man[i,14]=="31-40 years"){
+      true_index[i] = i
+    }
+  }
+  else if (ask_man[i,2]=="64 or over"){
+    if (ask_man[i,15]=="41 years or more" & ask_man[i,14]=="41 years or more"){
+      true_index[i] = i
+    }
+  }
+  else{}
+}
+
+#creating sep dataframe with only indexs that are true
+res2_ask_man = ask_man[true_index!="NULL",]
+
+print("a/f restriction:")
+nrow(res2_ask_man)
+```
 
 
