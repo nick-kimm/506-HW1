@@ -128,12 +128,36 @@ t.test(wine[132:178,7],mu=p_avg)
 
 ##Problem 2
 
+Part a: Import the data into a data.frame in R. As with the wine data, you may download the data outside of your submission, but importation should take place inside the problem set submission.
+```{r}
+ask_man = read.csv("/Users/nicholaskim/Documents/STAT 506/HW1/AskAManager.csv")
+```
 
+Part b: Clean up the variable names. Simplify them.
+```{r}
+#removing repeating id col
+ask_man = ask_man[,2:19]
 
+colnames(ask_man) <- c("Timestamp","Age Range","Industry","Job","Job ext","Salary","Overtime Salary","Currency","Other Currency","Salary ext","Country","State","City","Yrs Exp","Exp in Field","Highest Degree","Gender","Race")
+```
 
+Part c: Restrict the data to those being paid in US dollars (USD). Show that it worked by confirming the number of observations before and after restricting the data.
+```{r}
+#before restriction
+print("b/f restriction:") 
+nrow(ask_man)
 
+#after restriction
+res_ask_man = ask_man[ask_man$Currency=="USD",]
 
+print("a/f restriction:")
+nrow(res_ask_man)
+```
 
+Part d: Assume no one starts working before age 18. Eliminate any rows for which their age, years of experience in their field, and years of experience total are impossible. Again, confirm the number of observations. (Hint: Making these variables factor may make your life easier.)
+
+```{r}
+```
 
 
 
