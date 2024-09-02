@@ -231,5 +231,80 @@ nrow(res2_ask_man)
 Part e: A lot of the incomes are likely false. Eliminate any rows with extremely low or extremely high salaries. I’ll leave the decision of what thresholds to use up to you; you could choose to eliminate only impossible values, or you could restrict the sample to eliminate the extreme values even if they are realistic (e.g. removing the billionaires or the folks making < $1,000 per year). You must justify your choice, along with either a cited source or an exploration the data, or some combination.
 
 ```{r}
-```   
+#First filter the data set of just USD currency folks by age ranges to get their avg salary within each bucket
+l18 = res_ask_man[res_ask_man$`Age Range`=="under 18",]
+l18_24 = res_ask_man[res_ask_man$`Age Range`=="18-24",]
+l25_34 = res_ask_man[res_ask_man$`Age Range`=="25-34",]
+l35_44 = res_ask_man[res_ask_man$`Age Range`=="35-44",]
+l45_54 = res_ask_man[res_ask_man$`Age Range`=="45-54",]
+l55_64 = res_ask_man[res_ask_man$`Age Range`=="55-64",]
+l65 = res_ask_man[res_ask_man$`Age Range`=="65 or over",]
+
+#store index's of rows that match our condition (we don't want to store these in final)
+indexs = list()
+
+for (i in 1:nrow(res_ask_man)){
+  if (res_ask_man[i,2]=="under 18"){
+    if ((res_ask_man[i,6]-mean(l18$Salary))/sd(l18$Salary)>2){
+      indexs[i] = i
+    }
+    else if ((res_ask_man[i,6]-mean(l18$Salary))/sd(l18$Salary)<0){
+      indexs[i] = i
+    }
+  }
+  else if (res_ask_man[i,2]=="18-24"){
+    if ((res_ask_man[i,6]-mean(l18_24$Salary))/sd(l18_24$Salary)>2){
+      indexs[i] = i
+    }
+    else if ((res_ask_man[i,6]-mean(l18_24$Salary))/sd(l18_24$Salary)<0){
+      indexs[i] = i
+    }
+  }
+  else if (res_ask_man[i,2]=="25-34"){
+    if ((res_ask_man[i,6]-mean(l25_34$Salary))/sd(l25_34$Salary)>2){
+      indexs[i] = i
+    }
+    else if ((res_ask_man[i,6]-mean(l25_34$Salary))/sd(l25_34$Salary)<0){
+      indexs[i] = i
+    }
+  }
+  else if (res_ask_man[i,2]=="35-44"){
+    if ((res_ask_man[i,6]-mean(l35_44$Salary))/sd(l35_44$Salary)>2){
+      indexs[i] = i
+    }
+    else if ((res_ask_man[i,6]-mean(l35_44$Salary))/sd(l35_44$Salary)<0){
+      indexs[i] = i
+    }
+  }
+  else if (res_ask_man[i,2]=="45-54"){
+    if ((res_ask_man[i,6]-mean(l45_54$Salary))/sd(l45_54$Salary)>2){
+      indexs[i] = i
+    }
+    else if ((res_ask_man[i,6]-mean(l45_54$Salary))/sd(l45_54$Salary)<0){
+      indexs[i] = i
+    }
+  }
+  else if (res_ask_man[i,2]=="55-64"){
+    if ((res_ask_man[i,6]-mean(l55_64$Salary))/sd(l55_64$Salary)>2){
+      indexs[i] = i
+    }
+    else if ((res_ask_man[i,6]-mean(l55_64$Salary))/sd(l55_64$Salary)<0){
+      indexs[i] = i
+    }
+  }
+  else if (res_ask_man[i,2]=="65 or over"){
+    if ((res_ask_man[i,6]-mean(l65$Salary))/sd(l65$Salary)>2){
+      indexs[i] = i
+    }
+    else if ((res_ask_man[i,6]-mean(l65$Salary))/sd(l65$Salary)<0){
+      indexs[i] = i
+    }
+  }
+}
+
+non_outliers = res_ask_man[indexs=="NULL",]
+```
+
+With this approach we are filtering out any Salaries that are extremely large (larger than 2 standard deviations) in the context of their age group and any values where the Salary is zero. The reasoning being we are able to contextualize their salary with a larger sample and see how far away from the average they are. The 2 was arbitrarily set. 
+  
 
