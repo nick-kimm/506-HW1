@@ -228,5 +228,8 @@ res2_ask_man = ask_man[true_index!="NULL",]
 print("a/f restriction:")
 nrow(res2_ask_man)
 ```
+Part e: A lot of the incomes are likely false. Eliminate any rows with extremely low or extremely high salaries. I’ll leave the decision of what thresholds to use up to you; you could choose to eliminate only impossible values, or you could restrict the sample to eliminate the extreme values even if they are realistic (e.g. removing the billionaires or the folks making < $1,000 per year). You must justify your choice, along with either a cited source or an exploration the data, or some combination.
 
+```{r}
+```   
 
