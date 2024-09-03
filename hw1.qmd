@@ -323,14 +323,13 @@ isPalindromic <- function(x){
   
   forward = list()
   backward = list()
-  for (i in digits){
-    forward[i] = i
+  for (i in 1:length(digits)){
+    forward[i] = digits[i]
   }
-  for (i in digits){
-    backward[i] = i
+  for (i in length(digits):1){
+    backward[i] = digits[i]
   }
-  return(digits)
-  return(forward)
+  #return(forward)
   return(backward)
   #for (i in 1:length(forward)){
     #if (forward==backward){
@@ -348,5 +347,13 @@ isPalindromic(728827)
 ```
 
 ```{r}
-test = 
+n = 19090
+
+d <- unlist(strsplit(as.character(n), ""))
+
+t = list()
+for (i in 1:length(d)){
+  t[i]=d[i]
+}
+t
 ```
