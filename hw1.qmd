@@ -320,42 +320,24 @@ reversed: The input with its digits reversed.
 isPalindromic <- function(x){
   #first convert x a number to a str so we can break it down by its digits
   digits <- unlist(strsplit(as.character(x), ""))
+  rev = 0
+  isP = TRUE
   
   forward = character(length(x))
   backward = character(length(x))
   for (i in 1:length(digits)){
     forward[i] = digits[i]
     backward[length(digits)-i+1] = digits[i]
+    rev = backward
   }
   if (forward[i]==backward[i]){
-    return(TRUE)
+    return(list(isP,rev))
   }
   else{
-    return(FALSE)
+    isP = FALSE
+    return(list(isP,rev))
   }
 }
 ```
 
-```{r}
-isPalindromic(19090)
-```
 
-```{r}
-n = 19090
-
-d <- unlist(strsplit(as.character(n), ""))
-
-f = character(length(d))
-b = character(length(d))
-for (i in length(d):1){
-  f[i]=d[i]
-  b[length(d)-i+1]=d[i]
-}
-#f
-#b
-for (i in 1:length(f)){
-  if (f[i]==b[i]){
-    print(TRUE)
-  }
-}
-```
