@@ -331,11 +331,11 @@ isPalindromic <- function(x){
     rev = as.numeric(backward)
   }
   if (forward[i]==backward[i]){
-    return(list(isP,rev))
+    return(list(isPalindromic=isP,reversed=rev))
   }
   else{
     isP = FALSE
-    return(list(isP,rev))
+    return(list(isPalindromi=isP,reversed=rev))
   }
 }
 
