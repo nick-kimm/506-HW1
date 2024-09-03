@@ -76,7 +76,7 @@ Part d: Create a table identifying the average value of each variable, providing
 
 Finding values for Overall Averages
 ```{r}
-overall_avgs = list()
+overall_avgs = vector()
 
 for (x in 1:14){
   overall_avgs[x] = mean(wine[,x])
@@ -85,28 +85,31 @@ for (x in 1:14){
 
 Finding averages for each Wine Type respectively
 ```{r}
-c1_avgs = list()
+c1_avgs = vector()
 
 for (x in 2:14){
   c1_avgs[x] = mean(wine[1:59,x])
 }
 
-c2_avgs = list()
+c2_avgs = vector()
 for (x in 2:14){
   c2_avgs[x] = mean(wine[60:131,x])
 }
 
-c3_avgs = list()
+c3_avgs = vector()
 
 for (x in 2:14){
   c3_avgs[x] = mean(wine[132:178,x])
 }
 ```
 
-Matrix to form data is shape we want
-````{r}
-matrix(d = c(overall_avgs[2:14],c1_avgs[2:14],c2_avgs[2:14],c3_avgs[2:14]),nrow=4, ncol=13,
-       dimnames=list(c("Overall Avg", "Type 1 Avg", "Type 2 Avg", "Type 3 Avg"),wine_names[2:14]))
+```{r}
+df<-data.frame(Overal_Avg = overall_avgs[2:14],
+           Type_1_Avg = c1_avgs[2:14],
+           Type_2_Avg = c2_avgs[2:14],
+           Type_3_Avg = c3_avgs[2:14])
+rownames(df)<-wine_names[2:14]
+df
 ```
 Part e: Carry out a series of t-tests to examine whether the level of phenols differs across the three classes. Present the R output and interpret the results.
 
