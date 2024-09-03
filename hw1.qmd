@@ -321,29 +321,23 @@ isPalindromic <- function(x){
   #first convert x a number to a str so we can break it down by its digits
   digits <- unlist(strsplit(as.character(x), ""))
   
-  forward = list()
-  backward = list()
+  forward = character(length(x))
+  backward = character(length(x))
   for (i in 1:length(digits)){
     forward[i] = digits[i]
+    backward[length(digits)-i+1] = digits[i]
   }
-  for (i in length(digits):1){
-    backward[i] = digits[i]
+  if (forward[i]==backward[i]){
+    return(TRUE)
   }
-  #return(forward)
-  return(backward)
-  #for (i in 1:length(forward)){
-    #if (forward==backward){
-      #return(TRUE)
-    #}
-    #else{
-      #return(FALSE)
-    #}
-  #}
+  else{
+    return(FALSE)
+  }
 }
 ```
 
 ```{r}
-isPalindromic(728827)
+isPalindromic(19090)
 ```
 
 ```{r}
@@ -351,9 +345,17 @@ n = 19090
 
 d <- unlist(strsplit(as.character(n), ""))
 
-t = list()
-for (i in 1:length(d)){
-  t[i]=d[i]
+f = character(length(d))
+b = character(length(d))
+for (i in length(d):1){
+  f[i]=d[i]
+  b[length(d)-i+1]=d[i]
 }
-t
+#f
+#b
+for (i in 1:length(f)){
+  if (f[i]==b[i]){
+    print(TRUE)
+  }
+}
 ```
