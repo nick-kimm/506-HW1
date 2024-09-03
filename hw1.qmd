@@ -328,7 +328,7 @@ isPalindromic <- function(x){
   for (i in 1:length(digits)){
     forward[i] = digits[i]
     backward[length(digits)-i+1] = digits[i]
-    rev = backward
+    rev = as.numeric(backward)
   }
   if (forward[i]==backward[i]){
     return(list(isP,rev))
@@ -338,6 +338,41 @@ isPalindromic <- function(x){
     return(list(isP,rev))
   }
 }
+
+isPalindromic(728827)
+```
+Part b: Create a function nextPalindrome that finds the next palindromic number strictly greater than the input. Be sure to provide a reasonable error on an invalid input.
+
+Input: A positive integer
+Output: A vector of length 1 with the next palindromic number greater than the input
+
+```{r}
+
 ```
 
+Part c:Use these functions to find the next palindrome for each of the following:
+
+i.391
+ii.9928
+iii.19272719
+iv.109
+v.2
+
+```{r}
+print("part i")
+isPalindromic(391)
+
+print("part ii")
+isPalindromic(9928)
+
+print("part iii")
+isPalindromic(19272719)
+
+print("part iv")
+isPalindromic(109)
+
+print("part v")
+isPalindromic(2)
+
+```
 
