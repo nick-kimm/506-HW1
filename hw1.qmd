@@ -6,7 +6,7 @@ format: html
 ---
 Link to my [github]("https://github.com/nick-kimm/Problem-Set-1") repository
 
-Looked up some functions and syntax online to answer some questions. Ex. Syntax of if statement inside for loop. 
+Looked up some functions and syntax online to answer some questions. Ex. Syntax of if statement inside for loop and how to iterate through the digits in a number. 
 
 ##Problem 1
 
@@ -318,21 +318,35 @@ reversed: The input with its digits reversed.
 
 ```{r}
 isPalindromic <- function(x){
+  #first convert x a number to a str so we can break it down by its digits
+  digits <- unlist(strsplit(as.character(x), ""))
+  
   forward = list()
   backward = list()
-  for (i in 1:length(x)){
-    forward[i] = x[i]
+  for (i in digits){
+    forward[i] = i
   }
-  for (i in length(x):1){
-    backward[i] = x[i]
-    i = i-1
+  for (i in digits){
+    backward[i] = i
   }
-  if (forward == backward){
-    return(TRUE)
-  }
-  else{
-    return(FALSE)
-  }
-  
+  return(digits)
+  return(forward)
+  return(backward)
+  #for (i in 1:length(forward)){
+    #if (forward==backward){
+      #return(TRUE)
+    #}
+    #else{
+      #return(FALSE)
+    #}
+  #}
 }
+```
+
+```{r}
+isPalindromic(728827)
+```
+
+```{r}
+test = 
 ```
