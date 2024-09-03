@@ -347,7 +347,9 @@ Input: A positive integer
 Output: A vector of length 1 with the next palindromic number greater than the input
 
 ```{r}
-
+nextPalindromic <- function(x){
+  
+}
 ```
 
 Part c:Use these functions to find the next palindrome for each of the following:
@@ -373,6 +375,6 @@ isPalindromic(109)
 
 print("part v")
 isPalindromic(2)
-
+#nextPalindromic(2)
 ```
 
