@@ -37,8 +37,10 @@ Q2. Which class has the highest correlation? Which has the lowest?
 ```{r}
 print("Class 1")
 cor(wine$Alchohol[wine$`Wine Type`==1],wine$`Color Intensity`[wine$`Wine Type`==1])
+cat("\n")
 print("Class 2")
 cor(wine$Alchohol[wine$`Wine Type`==2],wine$`Color Intensity`[wine$`Wine Type`==2])
+cat("\n")
 print("Class 3")
 cor(wine$Alchohol[wine$`Wine Type`==3],wine$`Color Intensity`[wine$`Wine Type`==3])
 ```
@@ -149,6 +151,7 @@ Part c: Restrict the data to those being paid in US dollars (USD). Show that it 
 print("b/f restriction:") 
 nrow(ask_man)
 
+cat("\n")
 #after restriction
 res_ask_man = ask_man[ask_man$Currency=="USD",]
 
@@ -163,6 +166,7 @@ Part d: Assume no one starts working before age 18. Eliminate any rows for which
 print("b/f restriction:") 
 nrow(res_ask_man)
 
+cat("\n")
 #after restriction
 true_index = list() #getting list of indexs that match the condition we want
 
@@ -305,6 +309,12 @@ for (i in 1:nrow(res_ask_man)){
 }
 
 non_outliers = res_ask_man[indexs=="NULL",]
+
+print("b/f restriction:")
+nrow(res2_ask_man)
+cat("\n")
+print("a/f restriction:")
+nrow(non_outliers)
 ```
 
 With this approach we are filtering out any Salaries that are extremely large (larger than 2 standard deviations) in the context of their age group and any values where the Salary is zero. The reasoning being we are able to contextualize their salary with a larger sample and see how far away from the average they are. The 2 was arbitrarily set. 
@@ -322,27 +332,21 @@ reversed: The input with its digits reversed.
 isPalindromic <- function(x){
   #first convert x a number to a str so we can break it down by its digits
   digits <- unlist(strsplit(as.character(x), ""))
-  rev = 0
-  isP = TRUE
   
-  forward = character(length(x))
-  backward = character(length(x))
+  backward = rev(digits)
+  
   for (i in 1:length(digits)){
-    forward[i] = digits[i]
-    backward[length(digits)-i+1] = digits[i]
-    rev = as.numeric(backward)
+    if (digits[i]==backward[i]){
+    }
+    else{
+        return(list(isPalindromic=FALSE,reversed=as.numeric(backward)))
+    }
   }
-  if (forward[i]==backward[i]){
-    return(list(isPalindromic=isP,reversed=rev))
-  }
-  else{
-    isP = FALSE
-    return(list(isPalindromic=isP,reversed=rev))
-  }
+  return(list(isPalindromic=TRUE,reversed=as.numeric(backward)))
 }
-
 #check
 isPalindromic(728827)
+isPalindromic(7237)
 ```
 Part b: Create a function nextPalindrome that finds the next palindromic number strictly greater than the input. Be sure to provide a reasonable error on an invalid input.
 
@@ -351,17 +355,33 @@ Output: A vector of length 1 with the next palindromic number greater than the i
 
 ```{r}
 nextPalindromic <- function(x){
+  x <- x+1
+  while (TRUE){
+    if (isPalindromic(x)[1]==TRUE){
+      return(x)
+    }
+    x <- x+1
+  }
+}
+
+nextPalindromic(7152)  
+```
+
+
+```{r}
+nextPalindromic2 <- function(x){
   digits <- unlist(strsplit(as.character(x), ""))
   
-  new_num = character(length(x)) #this is the next Palindrome number we will fill in the values for 
+  new_num = unlist(strsplit(as.character(list()), ""))
   
-  while (new_num < x){
+  while ((new_num < digits)==1){
     if (length(digits)%%2==0){ #if length is even. Logic goes look at first half and up last term by 1 and flip for other half
       half = length(digits)/2
       
       for (i in 1:length(digits)){
         if (i==half){
           new_num[i]=as.numeric(digits[i])+1
+          new_num[i+1]=new_num[i]
         }
         else{
           new_num[i] = digits[i]
@@ -372,17 +392,24 @@ nextPalindromic <- function(x){
     if (isPalindromic(new_num)[1]==TRUE){
       return(as.numeric(new_num))
     }
-    
   }
-  
 }
+
+nextPalindromic2(7152) 
 ```
 
 ```{r}
 n = 1000
 test <- unlist(strsplit(as.character(n), ""))
 
-as.numeric(test[1])+1
+l = list()
+
+r = unlist(strsplit(as.character(l), ""))
+
+for (i in 1:length(test)){
+  l <- append(l, list(as.numeric(test[i])))
+}
+l
 ```
 
 Part c:Use these functions to find the next palindrome for each of the following:
@@ -395,19 +422,22 @@ v.2
 
 ```{r}
 print("part i")
-isPalindromic(391)
+nextPalindromic(391)
+cat("\n")
 
 print("part ii")
-isPalindromic(9928)
+nextPalindromic(9928)
+cat("\n")
 
 print("part iii")
-isPalindromic(19272719)
+nextPalindromic(19272719)
+cat("\n")
 
 print("part iv")
-isPalindromic(109)
+nextPalindromic(109)
+cat("\n")
 
 print("part v")
-isPalindromic(2)
-#nextPalindromic(2)
+nextPalindromic(2)
 ```
 
