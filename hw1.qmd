@@ -374,50 +374,55 @@ zeros <- function(n, l){
 }
 
 nextPalindromic2 <- function(x){
-  digits <- unlist(strsplit(as.character(x), ""))
-  
-  new_num = zeros(0,length(digits))
-  
-  while (new_num < x){
-    if (length(digits)%%2==0){ #if length is even. Logic goes look at first half and up last term by 1 and flip for other half
-      half = length(digits)/2
-      
-      for (i in 1:length(digits)){
-        if (i==half){
-          if (digits[i]==9){
-            new_num[i]=digits[i]
+  if (isPalindromic(x)[1]==TRUE){
+    return(x+1)
+  }
+  else{
+    digits <- unlist(strsplit(as.character(x), ""))
+    
+    new_num = zeros(0,length(digits))
+    
+    while (new_num < x){
+      if (length(digits)%%2==0){ #if length is even. Logic goes look at first half and up last term by 1 and flip for other half
+        half = length(digits)/2
+        
+        for (i in 1:length(digits)){
+          if (i==half){
+            if (digits[i]==9){
+              new_num[i]=digits[i]
+              new_num[i+1]=new_num[i]
+              if (isPalindromic(new_num)[1]==TRUE){
+                return(as.numeric(new_num))
+              }
+            }
+            new_num[i]=as.numeric(digits[i])+1
             new_num[i+1]=new_num[i]
             if (isPalindromic(new_num)[1]==TRUE){
               return(as.numeric(new_num))
-            }
+              }
           }
-          new_num[i]=as.numeric(digits[i])+1
-          new_num[i+1]=new_num[i]
-          if (isPalindromic(new_num)[1]==TRUE){
-            return(as.numeric(new_num))
-            }
-        }
-        else{
-          new_num[i] = digits[i]
-          new_num[length(digits)-i+1] = digits[i]
+          else{
+            new_num[i] = digits[i]
+            new_num[length(digits)-i+1] = digits[i]
+          }
         }
       }
-    }
-    else{
-      mid = ceiling(length(digits)/2)
-      for (i in 1:length(digits)){
-        if (i==mid){
-          new_num[i]=as.numeric(digits[i])
-          if (isPalindromic(new_num)[1]==TRUE){
-            return(as.numeric(new_num))
-            }
+      else{
+        mid = ceiling(length(digits)/2)
+        for (i in 1:length(digits)){
+          if (i==mid){
+            new_num[i]=as.numeric(digits[i])
+            if (isPalindromic(new_num)[1]==TRUE){
+              return(as.numeric(new_num))
+              }
+          }
+          else{
+            new_num[i] = digits[i]
+            new_num[length(digits)-i+1] = digits[i]
+          }
         }
-        else{
-          new_num[i] = digits[i]
-          new_num[length(digits)-i+1] = digits[i]
-        }
+        
       }
-      
     }
   }
 }
