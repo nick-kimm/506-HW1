@@ -113,21 +113,23 @@ df
 ```
 Part e: Carry out a series of t-tests to examine whether the level of phenols differs across the three classes. Present the R output and interpret the results.
 
-T-test for Wine Type 1
+T-test for Wine Type 1 v Type 2
 ```{r}
-p_avg = mean(wine[,7])
+t.test(wine$`Total Phenols`[wine$`Wine Type`==1],wine$`Total Phenols`[wine$`Wine Type`==2])
+```
+The output of this t test shows that it is statistically significant to show that the difference in Phenols between Class 1 and Class 2 is not zero. In other words, they are very different.
 
-t.test(wine[1:59,7],mu=p_avg)
-```
-T-test Wine Type 2
+T-test Wine Type 2 v Type 3
 ```{r}
-t.test(wine[60:131,7],mu=p_avg)
+t.test(wine$`Total Phenols`[wine$`Wine Type`==2],wine$`Total Phenols`[wine$`Wine Type`==3])
 ```
-T-test Wine Type 3
-```{r}
-t.test(wine[132:178,7],mu=p_avg)
-```
+Similarly, the output above shows that it is statistically significant to in that the difference in Phenols between Class 2 and Class 3 is not zero. However, it seems it is not as different than that between Class 1 and 2 as the t value and probability is a little smaller.
 
+T-test Wine Type 1 v Type 3
+```{r}
+t.test(wine$`Total Phenols`[wine$`Wine Type`==1],wine$`Total Phenols`[wine$`Wine Type`==3])
+```
+Similarly, the output above shows that the it is statistically significant in that the difference in Phenols between Class 1 and Class 3 is not zero. Comparing it to the other two t test results we can see that the difference between these two classes is by far the most difference as the t value is more than double that of the tests above. 
 
 ##Problem 2
 
