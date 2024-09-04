@@ -337,7 +337,7 @@ isPalindromic <- function(x){
   }
   else{
     isP = FALSE
-    return(list(isPalindromi=isP,reversed=rev))
+    return(list(isPalindromic=isP,reversed=rev))
   }
 }
 
@@ -351,8 +351,38 @@ Output: A vector of length 1 with the next palindromic number greater than the i
 
 ```{r}
 nextPalindromic <- function(x){
+  digits <- unlist(strsplit(as.character(x), ""))
+  
+  new_num = character(length(x)) #this is the next Palindrome number we will fill in the values for 
+  
+  while (new_num < x){
+    if (length(digits)%%2==0){ #if length is even. Logic goes look at first half and up last term by 1 and flip for other half
+      half = length(digits)/2
+      
+      for (i in 1:length(digits)){
+        if (i==half){
+          new_num[i]=as.numeric(digits[i])+1
+        }
+        else{
+          new_num[i] = digits[i]
+          new_num[length(digits)-i+1] = digits[i]
+        }
+      }
+    }
+    if (isPalindromic(new_num)[1]==TRUE){
+      return(as.numeric(new_num))
+    }
+    
+  }
   
 }
+```
+
+```{r}
+n = 1000
+test <- unlist(strsplit(as.character(n), ""))
+
+as.numeric(test[1])+1
 ```
 
 Part c:Use these functions to find the next palindrome for each of the following:
