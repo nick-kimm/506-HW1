@@ -35,8 +35,11 @@ The correlation between these two variables is 54.64%
 
 Q2. Which class has the highest correlation? Which has the lowest?
 ```{r}
+print("Class 1")
 cor(wine$Alchohol[wine$`Wine Type`==1],wine$`Color Intensity`[wine$`Wine Type`==1])
+print("Class 2")
 cor(wine$Alchohol[wine$`Wine Type`==2],wine$`Color Intensity`[wine$`Wine Type`==2])
+print("Class 3")
 cor(wine$Alchohol[wine$`Wine Type`==3],wine$`Color Intensity`[wine$`Wine Type`==3])
 ```
 From above we can see that Class 1 has the highest correlation of roughly 40% while Class 2 has the lowest at roughly 27%.
@@ -338,6 +341,7 @@ isPalindromic <- function(x){
   }
 }
 
+#check
 isPalindromic(728827)
 ```
 Part b: Create a function nextPalindrome that finds the next palindromic number strictly greater than the input. Be sure to provide a reasonable error on an invalid input.
