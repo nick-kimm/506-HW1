@@ -35,17 +35,11 @@ The correlation between these two variables is 54.64%
 
 Q2. Which class has the highest correlation? Which has the lowest?
 ```{r}
-#Color Intensity
-cor(wine[1:59,11],wine[1:59,1])
-cor(wine[60:131,11],wine[60:131,1])
-cor(wine[132:178,11],wine[132:178,1])
-
-#Alchohol
-cor(wine[1:59,2],wine[1:59,1])
-cor(wine[60:131,2],wine[60:131,1])
-cor(wine[132:178,2],wine[132:178,1])
+cor(wine$Alchohol[wine$`Wine Type`==1],wine$`Color Intensity`[wine$`Wine Type`==1])
+cor(wine$Alchohol[wine$`Wine Type`==2],wine$`Color Intensity`[wine$`Wine Type`==2])
+cor(wine$Alchohol[wine$`Wine Type`==3],wine$`Color Intensity`[wine$`Wine Type`==3])
 ```
-The Class with the highest correlation for both Color Intensity and Alchohol is Class 2 while the lowest is both Class 1 and 3 equally.
+From above we can see that Class 1 has the highest correlation of roughly 40% while Class 2 has the lowest at roughly 27%.
 
 Q3. What is the alcohol content of the wine with the highest color intensity?
 ```{r}
