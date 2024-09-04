@@ -369,12 +369,16 @@ nextPalindromic(7152)
 
 
 ```{r}
+zeros <- function(n, l){
+  return(sprintf(paste0("%0", l, "d"), n))
+}
+
 nextPalindromic2 <- function(x){
   digits <- unlist(strsplit(as.character(x), ""))
   
-  new_num = unlist(strsplit(as.character(list()), ""))
+  new_num = zeros(0,length(digits))
   
-  while ((new_num < digits)==1){
+  while (new_num < x){
     if (length(digits)%%2==0){ #if length is even. Logic goes look at first half and up last term by 1 and flip for other half
       half = length(digits)/2
       
@@ -382,6 +386,9 @@ nextPalindromic2 <- function(x){
         if (i==half){
           new_num[i]=as.numeric(digits[i])+1
           new_num[i+1]=new_num[i]
+          if (isPalindromic(new_num)[1]==TRUE){
+            return(as.numeric(new_num))
+            }
         }
         else{
           new_num[i] = digits[i]
@@ -389,8 +396,8 @@ nextPalindromic2 <- function(x){
         }
       }
     }
-    if (isPalindromic(new_num)[1]==TRUE){
-      return(as.numeric(new_num))
+    else{
+      
     }
   }
 }
@@ -399,17 +406,17 @@ nextPalindromic2(7152)
 ```
 
 ```{r}
+
 n = 1000
 test <- unlist(strsplit(as.character(n), ""))
 
+start = numeric(length(test))
 l = list()
 
-r = unlist(strsplit(as.character(l), ""))
+r = unlist(strsplit(as.character(start), ""))
 
-for (i in 1:length(test)){
-  l <- append(l, list(as.numeric(test[i])))
-}
-l
+zeros(0,length(test))<n
+
 ```
 
 Part c:Use these functions to find the next palindrome for each of the following:
