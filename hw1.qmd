@@ -384,6 +384,13 @@ nextPalindromic2 <- function(x){
       
       for (i in 1:length(digits)){
         if (i==half){
+          if (digits[i]==9){
+            new_num[i]=digits[i]
+            new_num[i+1]=new_num[i]
+            if (isPalindromic(new_num)[1]==TRUE){
+              return(as.numeric(new_num))
+            }
+          }
           new_num[i]=as.numeric(digits[i])+1
           new_num[i+1]=new_num[i]
           if (isPalindromic(new_num)[1]==TRUE){
@@ -397,12 +404,26 @@ nextPalindromic2 <- function(x){
       }
     }
     else{
+      mid = ceiling(length(digits)/2)
+      for (i in 1:length(digits)){
+        if (i==mid){
+          new_num[i]=as.numeric(digits[i])
+          if (isPalindromic(new_num)[1]==TRUE){
+            return(as.numeric(new_num))
+            }
+        }
+        else{
+          new_num[i] = digits[i]
+          new_num[length(digits)-i+1] = digits[i]
+        }
+      }
       
     }
   }
 }
 
 nextPalindromic2(7152) 
+nextPalindromic2(765431537)
 ```
 
 ```{r}
@@ -417,6 +438,7 @@ r = unlist(strsplit(as.character(start), ""))
 
 zeros(0,length(test))<n
 
+ceiling(7/2)
 ```
 
 Part c:Use these functions to find the next palindrome for each of the following:
@@ -430,21 +452,26 @@ v.2
 ```{r}
 print("part i")
 nextPalindromic(391)
+nextPalindromic2(391)
 cat("\n")
 
 print("part ii")
 nextPalindromic(9928)
+nextPalindromic2(9928)
 cat("\n")
 
 print("part iii")
 nextPalindromic(19272719)
+nextPalindromic2(19272719)
 cat("\n")
 
 print("part iv")
 nextPalindromic(109)
+nextPalindromic2(109)
 cat("\n")
 
 print("part v")
 nextPalindromic(2)
+nextPalindromic2(2)
 ```
 
