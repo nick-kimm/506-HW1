@@ -4,7 +4,7 @@ author: Nicholas Kim
 format: html
 
 ---
-Link to my [github]("https://github.com/nick-kimm/506-HW1.git") repository
+Link to my [github](https://github.com/nick-kimm/506-HW1) repository
 
 Looked up some functions and syntax online to answer some questions. Ex. Syntax of if statement inside for loop and how to iterate through the digits in a number. 
 
