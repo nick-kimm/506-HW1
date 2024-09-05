@@ -329,12 +329,15 @@ isPalindromic: A logical value indicating if the input is palindromic.
 reversed: The input with its digits reversed.
 
 ```{r}
+#Description: Function will take a number x and will check if it is a Palindrom (written same from front and back)
 isPalindromic <- function(x){
   #first convert x a number to a str so we can break it down by its digits
   digits <- unlist(strsplit(as.character(x), ""))
   
+  #will store the backward pass of the integers of the inputted number
   backward = rev(digits)
   
+  #will iterate through and check if each integer in the forward pass is the same as the integer in the same position during the backward pass
   for (i in 1:length(digits)){
     if (digits[i]==backward[i]){
     }
@@ -354,12 +357,16 @@ Input: A positive integer
 Output: A vector of length 1 with the next palindromic number greater than the input
 
 ```{r}
+#Description: Will find the next Palindrome starting from the inputted number x
 nextPalindromic <- function(x){
+  #will keep increasing the number until it is a valid Palindrome
   x <- x+1
   while (TRUE){
     if (isPalindromic(x)[1]==TRUE){
+      #will check if it is a valid Palindrome and if it is output x
       return(x)
     }
+    #if not keep increasing the number 
     x <- x+1
   }
 }
@@ -377,63 +384,92 @@ When odd alternate storing values until the midpoint. Check to see that the numb
 
 Edge case for 9 when even as we can't store 10
 ```{r}
+#Description: Will create a string of numbers n of l length
+#Ex. zeros(0,4) = 0000
 zeros <- function(n, l){
   return(sprintf(paste0("%0", l, "d"), n))
 }
 
+#Description: Is another approach to find next Palindrome through string manipulation. Will be different for the case if the length of the input is even or odd. 
 nextPalindromic2 <- function(x){
-  if (isPalindromic(x)[1]==TRUE){
+  #This is to cover the edge case when the inputted number is a single integer and add one to it. 
+  if (isPalindromic(x)[1]==TRUE & length(x)==1){
+    #If the number is 9 the logic doesn't hold so we'll set it manually to 11
+    if(x==9){
+      return(11)
+    }
     return(x+1)
   }
   else{
+    #unpack the number to get digits of x
     digits <- unlist(strsplit(as.character(x), ""))
     
+    #create a string that is initialized to zero and is of the exact length of the inputted number.
+    #we'll replace the value at a certain index with what we want
     new_num = zeros(0,length(digits))
     
-    while (new_num < x){
+    #will keep running continuously until we get value we want
+    while (TRUE){
+      #will check if the length is even
       if (length(digits)%%2==0){
+        
+        #will find the middle index
         half = length(digits)/2
         
+        #will iterate through each digit in the inputted number x
         for (i in 1:length(digits)){
+          #will first check if the index is the half way point
           if (i==half){
+            #will check if it is 9 and if it is make sure it doesn't get added by 1
             if (digits[i]==9){
               new_num[i]=digits[i]
               new_num[i+1]=new_num[i]
               if (isPalindromic(new_num)[1]==TRUE){
+                #will check if the number is a valid Palindrome and if it is return the number
                 return(as.numeric(new_num))
               }
             }
+            #will first try seeing when we don't increase the halfway value by one is a valid palindrome
             new_num[i]=as.numeric(digits[i])
             new_num[i+1]=new_num[i]
             if (isPalindromic(new_num)[1]==TRUE & paste(new_num,collapse = "")>x){
+              #will check if the num is valid palindrome and if it's larger than the initial number then output the number
               return(as.numeric(new_num))
             }
+            #in the case our initial check isn't a valid answer we'll increase the value at the halfway point by 1
             new_num[i]=as.numeric(digits[i])+1
             new_num[i+1]=new_num[i]
             if (isPalindromic(new_num)[1]==TRUE){
+              #check if the new num is valid pal and output
               return(as.numeric(new_num))
               }
           }
           else{
+            #in case the index isn't our halfway point it'll save the int of our intial number front and back 
             new_num[i] = digits[i]
             new_num[length(digits)-i+1] = digits[i]
           }
         }
       }
       else{
+        #in case length is odd we'll store values front and pack until our midpoint
         mid = ceiling(length(digits)/2)
         for (i in 1:length(digits)){
           if (i==mid){
+            #if our index is at the midpoint make sure to store this value only once 
             new_num[i]=as.numeric(digits[i])
             if (isPalindromic(new_num)[1]==TRUE & paste(new_num,collapse = "")>x){
+              #check is this num is valid answer
               return(as.numeric(new_num))
             }
             else if (paste(new_num,collapse = "")<x){
+              #if the num is not larger than our initial number increase this midpoint by 1
               new_num[i] = as.numeric(new_num[i])+1
               return(as.numeric(new_num))
             }
           }
           else{
+            #store value back and forth if its not the midpoint
             new_num[i] = digits[i]
             new_num[length(digits)-i+1] = digits[i]
           }
