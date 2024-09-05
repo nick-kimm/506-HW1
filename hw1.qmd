@@ -367,7 +367,15 @@ nextPalindromic <- function(x){
 nextPalindromic(7152)  
 ```
 
+Another approach. Sorry in advance in trying to read this. 
 
+Logic: 
+
+When even try up the middle term by one and alternate storing the values from front and back till that point. Frist try the case without adding the middle term by one if it is larger than the input. 
+
+When odd alternate storing values until the midpoint. Check to see that the number is larger than the input and if not add the midpoint value up by one. 
+
+Edge case for 9 when even as we can't store 10
 ```{r}
 zeros <- function(n, l){
   return(sprintf(paste0("%0", l, "d"), n))
@@ -383,7 +391,8 @@ nextPalindromic2 <- function(x){
     new_num = zeros(0,length(digits))
     
     while (new_num < x){
-      if (length(digits)%%2==0){ #if length is even. Logic goes look at first half and up last term by 1 and flip for other half
+      if (length(digits)%%2==0){
+        
         half = length(digits)/2
         
         for (i in 1:length(digits)){
@@ -394,6 +403,11 @@ nextPalindromic2 <- function(x){
               if (isPalindromic(new_num)[1]==TRUE){
                 return(as.numeric(new_num))
               }
+            }
+            new_num[i]=as.numeric(digits[i])
+            new_num[i+1]=new_num[i]
+            if (isPalindromic(new_num)[1]==TRUE & paste(new_num,collapse = "")>x){
+              return(as.numeric(new_num))
             }
             new_num[i]=as.numeric(digits[i])+1
             new_num[i+1]=new_num[i]
@@ -412,9 +426,13 @@ nextPalindromic2 <- function(x){
         for (i in 1:length(digits)){
           if (i==mid){
             new_num[i]=as.numeric(digits[i])
-            if (isPalindromic(new_num)[1]==TRUE){
+            if (isPalindromic(new_num)[1]==TRUE & paste(new_num,collapse = "")>x){
               return(as.numeric(new_num))
-              }
+            }
+            else if (paste(new_num,collapse = "")<x){
+              new_num[i] = as.numeric(new_num[i])+1
+              return(as.numeric(new_num))
+            }
           }
           else{
             new_num[i] = digits[i]
@@ -429,21 +447,6 @@ nextPalindromic2 <- function(x){
 
 nextPalindromic2(7152) 
 nextPalindromic2(765431537)
-```
-
-```{r}
-
-n = 1000
-test <- unlist(strsplit(as.character(n), ""))
-
-start = numeric(length(test))
-l = list()
-
-r = unlist(strsplit(as.character(start), ""))
-
-zeros(0,length(test))<n
-
-ceiling(7/2)
 ```
 
 Part c:Use these functions to find the next palindrome for each of the following:
