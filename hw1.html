@@ -539,23 +539,26 @@ mean of x mean of y
 <p>Part a: Write function isPalindromic that checks if a given positive integer is a palindrome. Be sure to provide a reasonable error on an invalid input. Be sure to document your function (see instructions above).</p>
 <p>Input: A positive integer Output: A list with two elements: isPalindromic: A logical value indicating if the input is palindromic. reversed: The input with its digits reversed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>isPalindromic <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#first convert x a number to a str so we can break it down by its digits</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  digits <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">as.character</span>(x), <span class="st">""</span>))</span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  backward <span class="ot">=</span> <span class="fu">rev</span>(digits)</span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(digits)){</span>
-<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (digits[i]<span class="sc">==</span>backward[i]){</span>
-<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>{</span>
-<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPalindromic=</span><span class="cn">FALSE</span>,<span class="at">reversed=</span><span class="fu">as.numeric</span>(backward)))</span>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Description: Function will take a number x and will check if it is a Palindrom (written same from front and back)</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>isPalindromic <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#first convert x a number to a str so we can break it down by its digits</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  digits <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">as.character</span>(x), <span class="st">""</span>))</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#will store the backward pass of the integers of the inputted number</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>  backward <span class="ot">=</span> <span class="fu">rev</span>(digits)</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#will iterate through and check if each integer in the forward pass is the same as the integer in the same position during the backward pass</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(digits)){</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (digits[i]<span class="sc">==</span>backward[i]){</span>
 <span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPalindromic=</span><span class="cn">TRUE</span>,<span class="at">reversed=</span><span class="fu">as.numeric</span>(backward)))</span>
-<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a><span class="co">#check</span></span>
-<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a><span class="fu">isPalindromic</span>(<span class="dv">728827</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>{</span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPalindromic=</span><span class="cn">FALSE</span>,<span class="at">reversed=</span><span class="fu">as.numeric</span>(backward)))</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPalindromic=</span><span class="cn">TRUE</span>,<span class="at">reversed=</span><span class="fu">as.numeric</span>(backward)))</span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a><span class="co">#check</span></span>
+<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a><span class="fu">isPalindromic</span>(<span class="dv">728827</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$isPalindromic
 [1] TRUE
@@ -575,17 +578,21 @@ $reversed
 <p>Part b: Create a function nextPalindrome that finds the next palindromic number strictly greater than the input. Be sure to provide a reasonable error on an invalid input.</p>
 <p>Input: A positive integer Output: A vector of length 1 with the next palindromic number greater than the input</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>nextPalindromic <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (<span class="cn">TRUE</span>){</span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">isPalindromic</span>(x)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span>){</span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(x)</span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="fu">nextPalindromic</span>(<span class="dv">7152</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Description: Will find the next Palindrome starting from the inputted number x</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>nextPalindromic <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#will keep increasing the number until it is a valid Palindrome</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (<span class="cn">TRUE</span>){</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">isPalindromic</span>(x)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>      <span class="co">#will check if it is a valid Palindrome and if it is output x</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(x)</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#if not keep increasing the number </span></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="fu">nextPalindromic</span>(<span class="dv">7152</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7227</code></pre>
 </div>
@@ -596,74 +603,103 @@ $reversed
 <p>When odd alternate storing values until the midpoint. Check to see that the number is larger than the input and if not add the midpoint value up by one.</p>
 <p>Edge case for 9 when even as we can’t store 10</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>zeros <span class="ot">&lt;-</span> <span class="cf">function</span>(n, l){</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"%0"</span>, l, <span class="st">"d"</span>), n))</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>nextPalindromic2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">isPalindromic</span>(x)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span>){</span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>{</span>
-<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>    digits <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">as.character</span>(x), <span class="st">""</span>))</span>
-<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>    new_num <span class="ot">=</span> <span class="fu">zeros</span>(<span class="dv">0</span>,<span class="fu">length</span>(digits))</span>
-<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (new_num <span class="sc">&lt;</span> x){</span>
-<span id="cb65-15"><a href="#cb65-15" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">length</span>(digits)<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb65-16"><a href="#cb65-16" aria-hidden="true" tabindex="-1"></a>        half <span class="ot">=</span> <span class="fu">length</span>(digits)<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb65-17"><a href="#cb65-17" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb65-18"><a href="#cb65-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(digits)){</span>
-<span id="cb65-19"><a href="#cb65-19" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (i<span class="sc">==</span>half){</span>
-<span id="cb65-20"><a href="#cb65-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (digits[i]<span class="sc">==</span><span class="dv">9</span>){</span>
-<span id="cb65-21"><a href="#cb65-21" aria-hidden="true" tabindex="-1"></a>              new_num[i]<span class="ot">=</span>digits[i]</span>
-<span id="cb65-22"><a href="#cb65-22" aria-hidden="true" tabindex="-1"></a>              new_num[i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">=</span>new_num[i]</span>
-<span id="cb65-23"><a href="#cb65-23" aria-hidden="true" tabindex="-1"></a>              <span class="cf">if</span> (<span class="fu">isPalindromic</span>(new_num)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span>){</span>
-<span id="cb65-24"><a href="#cb65-24" aria-hidden="true" tabindex="-1"></a>                <span class="fu">return</span>(<span class="fu">as.numeric</span>(new_num))</span>
-<span id="cb65-25"><a href="#cb65-25" aria-hidden="true" tabindex="-1"></a>              }</span>
-<span id="cb65-26"><a href="#cb65-26" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb65-27"><a href="#cb65-27" aria-hidden="true" tabindex="-1"></a>            new_num[i]<span class="ot">=</span><span class="fu">as.numeric</span>(digits[i])</span>
-<span id="cb65-28"><a href="#cb65-28" aria-hidden="true" tabindex="-1"></a>            new_num[i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">=</span>new_num[i]</span>
-<span id="cb65-29"><a href="#cb65-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (<span class="fu">isPalindromic</span>(new_num)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="fu">paste</span>(new_num,<span class="at">collapse =</span> <span class="st">""</span>)<span class="sc">&gt;</span>x){</span>
-<span id="cb65-30"><a href="#cb65-30" aria-hidden="true" tabindex="-1"></a>              <span class="fu">return</span>(<span class="fu">as.numeric</span>(new_num))</span>
-<span id="cb65-31"><a href="#cb65-31" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb65-32"><a href="#cb65-32" aria-hidden="true" tabindex="-1"></a>            new_num[i]<span class="ot">=</span><span class="fu">as.numeric</span>(digits[i])<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb65-33"><a href="#cb65-33" aria-hidden="true" tabindex="-1"></a>            new_num[i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">=</span>new_num[i]</span>
-<span id="cb65-34"><a href="#cb65-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (<span class="fu">isPalindromic</span>(new_num)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span>){</span>
-<span id="cb65-35"><a href="#cb65-35" aria-hidden="true" tabindex="-1"></a>              <span class="fu">return</span>(<span class="fu">as.numeric</span>(new_num))</span>
-<span id="cb65-36"><a href="#cb65-36" aria-hidden="true" tabindex="-1"></a>              }</span>
-<span id="cb65-37"><a href="#cb65-37" aria-hidden="true" tabindex="-1"></a>          }</span>
-<span id="cb65-38"><a href="#cb65-38" aria-hidden="true" tabindex="-1"></a>          <span class="cf">else</span>{</span>
-<span id="cb65-39"><a href="#cb65-39" aria-hidden="true" tabindex="-1"></a>            new_num[i] <span class="ot">=</span> digits[i]</span>
-<span id="cb65-40"><a href="#cb65-40" aria-hidden="true" tabindex="-1"></a>            new_num[<span class="fu">length</span>(digits)<span class="sc">-</span>i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> digits[i]</span>
-<span id="cb65-41"><a href="#cb65-41" aria-hidden="true" tabindex="-1"></a>          }</span>
-<span id="cb65-42"><a href="#cb65-42" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb65-43"><a href="#cb65-43" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb65-44"><a href="#cb65-44" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span>{</span>
-<span id="cb65-45"><a href="#cb65-45" aria-hidden="true" tabindex="-1"></a>        mid <span class="ot">=</span> <span class="fu">ceiling</span>(<span class="fu">length</span>(digits)<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb65-46"><a href="#cb65-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(digits)){</span>
-<span id="cb65-47"><a href="#cb65-47" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (i<span class="sc">==</span>mid){</span>
-<span id="cb65-48"><a href="#cb65-48" aria-hidden="true" tabindex="-1"></a>            new_num[i]<span class="ot">=</span><span class="fu">as.numeric</span>(digits[i])</span>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Description: Will create a string of numbers n of l length</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Ex. zeros(0,4) = 0000</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>zeros <span class="ot">&lt;-</span> <span class="cf">function</span>(n, l){</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"%0"</span>, l, <span class="st">"d"</span>), n))</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Description: Is another approach to find next Palindrome through string manipulation. Will be different for the case if the length of the input is even or odd. </span></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>nextPalindromic2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#This is to cover the edge case when the inputted number is a single integer and add one to it. </span></span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">isPalindromic</span>(x)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="fu">length</span>(x)<span class="sc">==</span><span class="dv">1</span>){</span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#If the number is 9 the logic doesn't hold so we'll set it manually to 11</span></span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">9</span>){</span>
+<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="dv">11</span>)</span>
+<span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb65-15"><a href="#cb65-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb65-16"><a href="#cb65-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb65-17"><a href="#cb65-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>{</span>
+<span id="cb65-18"><a href="#cb65-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">#unpack the number to get digits of x</span></span>
+<span id="cb65-19"><a href="#cb65-19" aria-hidden="true" tabindex="-1"></a>    digits <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="fu">as.character</span>(x), <span class="st">""</span>))</span>
+<span id="cb65-20"><a href="#cb65-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb65-21"><a href="#cb65-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create a string that is initialized to zero and is of the exact length of the inputted number.</span></span>
+<span id="cb65-22"><a href="#cb65-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">#we'll replace the value at a certain index with what we want</span></span>
+<span id="cb65-23"><a href="#cb65-23" aria-hidden="true" tabindex="-1"></a>    new_num <span class="ot">=</span> <span class="fu">zeros</span>(<span class="dv">0</span>,<span class="fu">length</span>(digits))</span>
+<span id="cb65-24"><a href="#cb65-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb65-25"><a href="#cb65-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">#will keep running continuously until we get value we want</span></span>
+<span id="cb65-26"><a href="#cb65-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (<span class="cn">TRUE</span>){</span>
+<span id="cb65-27"><a href="#cb65-27" aria-hidden="true" tabindex="-1"></a>      <span class="co">#will check if the length is even</span></span>
+<span id="cb65-28"><a href="#cb65-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">length</span>(digits)<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>){</span>
+<span id="cb65-29"><a href="#cb65-29" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb65-30"><a href="#cb65-30" aria-hidden="true" tabindex="-1"></a>        <span class="co">#will find the middle index</span></span>
+<span id="cb65-31"><a href="#cb65-31" aria-hidden="true" tabindex="-1"></a>        half <span class="ot">=</span> <span class="fu">length</span>(digits)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb65-32"><a href="#cb65-32" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb65-33"><a href="#cb65-33" aria-hidden="true" tabindex="-1"></a>        <span class="co">#will iterate through each digit in the inputted number x</span></span>
+<span id="cb65-34"><a href="#cb65-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(digits)){</span>
+<span id="cb65-35"><a href="#cb65-35" aria-hidden="true" tabindex="-1"></a>          <span class="co">#will first check if the index is the half way point</span></span>
+<span id="cb65-36"><a href="#cb65-36" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (i<span class="sc">==</span>half){</span>
+<span id="cb65-37"><a href="#cb65-37" aria-hidden="true" tabindex="-1"></a>            <span class="co">#will check if it is 9 and if it is make sure it doesn't get added by 1</span></span>
+<span id="cb65-38"><a href="#cb65-38" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (digits[i]<span class="sc">==</span><span class="dv">9</span>){</span>
+<span id="cb65-39"><a href="#cb65-39" aria-hidden="true" tabindex="-1"></a>              new_num[i]<span class="ot">=</span>digits[i]</span>
+<span id="cb65-40"><a href="#cb65-40" aria-hidden="true" tabindex="-1"></a>              new_num[i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">=</span>new_num[i]</span>
+<span id="cb65-41"><a href="#cb65-41" aria-hidden="true" tabindex="-1"></a>              <span class="cf">if</span> (<span class="fu">isPalindromic</span>(new_num)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb65-42"><a href="#cb65-42" aria-hidden="true" tabindex="-1"></a>                <span class="co">#will check if the number is a valid Palindrome and if it is return the number</span></span>
+<span id="cb65-43"><a href="#cb65-43" aria-hidden="true" tabindex="-1"></a>                <span class="fu">return</span>(<span class="fu">as.numeric</span>(new_num))</span>
+<span id="cb65-44"><a href="#cb65-44" aria-hidden="true" tabindex="-1"></a>              }</span>
+<span id="cb65-45"><a href="#cb65-45" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb65-46"><a href="#cb65-46" aria-hidden="true" tabindex="-1"></a>            <span class="co">#will first try seeing when we don't increase the halfway value by one is a valid palindrome</span></span>
+<span id="cb65-47"><a href="#cb65-47" aria-hidden="true" tabindex="-1"></a>            new_num[i]<span class="ot">=</span><span class="fu">as.numeric</span>(digits[i])</span>
+<span id="cb65-48"><a href="#cb65-48" aria-hidden="true" tabindex="-1"></a>            new_num[i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">=</span>new_num[i]</span>
 <span id="cb65-49"><a href="#cb65-49" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (<span class="fu">isPalindromic</span>(new_num)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="fu">paste</span>(new_num,<span class="at">collapse =</span> <span class="st">""</span>)<span class="sc">&gt;</span>x){</span>
-<span id="cb65-50"><a href="#cb65-50" aria-hidden="true" tabindex="-1"></a>              <span class="fu">return</span>(<span class="fu">as.numeric</span>(new_num))</span>
-<span id="cb65-51"><a href="#cb65-51" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb65-52"><a href="#cb65-52" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">paste</span>(new_num,<span class="at">collapse =</span> <span class="st">""</span>)<span class="sc">&lt;</span>x){</span>
-<span id="cb65-53"><a href="#cb65-53" aria-hidden="true" tabindex="-1"></a>              new_num[i] <span class="ot">=</span> <span class="fu">as.numeric</span>(new_num[i])<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb65-54"><a href="#cb65-54" aria-hidden="true" tabindex="-1"></a>              <span class="fu">return</span>(<span class="fu">as.numeric</span>(new_num))</span>
-<span id="cb65-55"><a href="#cb65-55" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb65-56"><a href="#cb65-56" aria-hidden="true" tabindex="-1"></a>          }</span>
-<span id="cb65-57"><a href="#cb65-57" aria-hidden="true" tabindex="-1"></a>          <span class="cf">else</span>{</span>
-<span id="cb65-58"><a href="#cb65-58" aria-hidden="true" tabindex="-1"></a>            new_num[i] <span class="ot">=</span> digits[i]</span>
-<span id="cb65-59"><a href="#cb65-59" aria-hidden="true" tabindex="-1"></a>            new_num[<span class="fu">length</span>(digits)<span class="sc">-</span>i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> digits[i]</span>
+<span id="cb65-50"><a href="#cb65-50" aria-hidden="true" tabindex="-1"></a>              <span class="co">#will check if the num is valid palindrome and if it's larger than the initial number then output the number</span></span>
+<span id="cb65-51"><a href="#cb65-51" aria-hidden="true" tabindex="-1"></a>              <span class="fu">return</span>(<span class="fu">as.numeric</span>(new_num))</span>
+<span id="cb65-52"><a href="#cb65-52" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb65-53"><a href="#cb65-53" aria-hidden="true" tabindex="-1"></a>            <span class="co">#in the case our initial check isn't a valid answer we'll increase the value at the halfway point by 1</span></span>
+<span id="cb65-54"><a href="#cb65-54" aria-hidden="true" tabindex="-1"></a>            new_num[i]<span class="ot">=</span><span class="fu">as.numeric</span>(digits[i])<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb65-55"><a href="#cb65-55" aria-hidden="true" tabindex="-1"></a>            new_num[i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">=</span>new_num[i]</span>
+<span id="cb65-56"><a href="#cb65-56" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (<span class="fu">isPalindromic</span>(new_num)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb65-57"><a href="#cb65-57" aria-hidden="true" tabindex="-1"></a>              <span class="co">#check if the new num is valid pal and output</span></span>
+<span id="cb65-58"><a href="#cb65-58" aria-hidden="true" tabindex="-1"></a>              <span class="fu">return</span>(<span class="fu">as.numeric</span>(new_num))</span>
+<span id="cb65-59"><a href="#cb65-59" aria-hidden="true" tabindex="-1"></a>              }</span>
 <span id="cb65-60"><a href="#cb65-60" aria-hidden="true" tabindex="-1"></a>          }</span>
-<span id="cb65-61"><a href="#cb65-61" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb65-62"><a href="#cb65-62" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb65-63"><a href="#cb65-63" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb65-64"><a href="#cb65-64" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb65-65"><a href="#cb65-65" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb65-66"><a href="#cb65-66" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb65-67"><a href="#cb65-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-68"><a href="#cb65-68" aria-hidden="true" tabindex="-1"></a><span class="fu">nextPalindromic2</span>(<span class="dv">7152</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb65-61"><a href="#cb65-61" aria-hidden="true" tabindex="-1"></a>          <span class="cf">else</span>{</span>
+<span id="cb65-62"><a href="#cb65-62" aria-hidden="true" tabindex="-1"></a>            <span class="co">#in case the index isn't our halfway point it'll save the int of our intial number front and back </span></span>
+<span id="cb65-63"><a href="#cb65-63" aria-hidden="true" tabindex="-1"></a>            new_num[i] <span class="ot">=</span> digits[i]</span>
+<span id="cb65-64"><a href="#cb65-64" aria-hidden="true" tabindex="-1"></a>            new_num[<span class="fu">length</span>(digits)<span class="sc">-</span>i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> digits[i]</span>
+<span id="cb65-65"><a href="#cb65-65" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb65-66"><a href="#cb65-66" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb65-67"><a href="#cb65-67" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb65-68"><a href="#cb65-68" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span>{</span>
+<span id="cb65-69"><a href="#cb65-69" aria-hidden="true" tabindex="-1"></a>        <span class="co">#in case length is odd we'll store values front and pack until our midpoint</span></span>
+<span id="cb65-70"><a href="#cb65-70" aria-hidden="true" tabindex="-1"></a>        mid <span class="ot">=</span> <span class="fu">ceiling</span>(<span class="fu">length</span>(digits)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb65-71"><a href="#cb65-71" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(digits)){</span>
+<span id="cb65-72"><a href="#cb65-72" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (i<span class="sc">==</span>mid){</span>
+<span id="cb65-73"><a href="#cb65-73" aria-hidden="true" tabindex="-1"></a>            <span class="co">#if our index is at the midpoint make sure to store this value only once </span></span>
+<span id="cb65-74"><a href="#cb65-74" aria-hidden="true" tabindex="-1"></a>            new_num[i]<span class="ot">=</span><span class="fu">as.numeric</span>(digits[i])</span>
+<span id="cb65-75"><a href="#cb65-75" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (<span class="fu">isPalindromic</span>(new_num)[<span class="dv">1</span>]<span class="sc">==</span><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="fu">paste</span>(new_num,<span class="at">collapse =</span> <span class="st">""</span>)<span class="sc">&gt;</span>x){</span>
+<span id="cb65-76"><a href="#cb65-76" aria-hidden="true" tabindex="-1"></a>              <span class="co">#check is this num is valid answer</span></span>
+<span id="cb65-77"><a href="#cb65-77" aria-hidden="true" tabindex="-1"></a>              <span class="fu">return</span>(<span class="fu">as.numeric</span>(new_num))</span>
+<span id="cb65-78"><a href="#cb65-78" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb65-79"><a href="#cb65-79" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">paste</span>(new_num,<span class="at">collapse =</span> <span class="st">""</span>)<span class="sc">&lt;</span>x){</span>
+<span id="cb65-80"><a href="#cb65-80" aria-hidden="true" tabindex="-1"></a>              <span class="co">#if the num is not larger than our initial number increase this midpoint by 1</span></span>
+<span id="cb65-81"><a href="#cb65-81" aria-hidden="true" tabindex="-1"></a>              new_num[i] <span class="ot">=</span> <span class="fu">as.numeric</span>(new_num[i])<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb65-82"><a href="#cb65-82" aria-hidden="true" tabindex="-1"></a>              <span class="fu">return</span>(<span class="fu">as.numeric</span>(new_num))</span>
+<span id="cb65-83"><a href="#cb65-83" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb65-84"><a href="#cb65-84" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb65-85"><a href="#cb65-85" aria-hidden="true" tabindex="-1"></a>          <span class="cf">else</span>{</span>
+<span id="cb65-86"><a href="#cb65-86" aria-hidden="true" tabindex="-1"></a>            <span class="co">#store value back and forth if its not the midpoint</span></span>
+<span id="cb65-87"><a href="#cb65-87" aria-hidden="true" tabindex="-1"></a>            new_num[i] <span class="ot">=</span> digits[i]</span>
+<span id="cb65-88"><a href="#cb65-88" aria-hidden="true" tabindex="-1"></a>            new_num[<span class="fu">length</span>(digits)<span class="sc">-</span>i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> digits[i]</span>
+<span id="cb65-89"><a href="#cb65-89" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb65-90"><a href="#cb65-90" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb65-91"><a href="#cb65-91" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb65-92"><a href="#cb65-92" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb65-93"><a href="#cb65-93" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb65-94"><a href="#cb65-94" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb65-95"><a href="#cb65-95" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb65-96"><a href="#cb65-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-97"><a href="#cb65-97" aria-hidden="true" tabindex="-1"></a><span class="fu">nextPalindromic2</span>(<span class="dv">7152</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7 2 2 7</code></pre>
 </div>
