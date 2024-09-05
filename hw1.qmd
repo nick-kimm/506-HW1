@@ -18,7 +18,7 @@ wine_names <- list('Wine Type','Alchohol','Malic Acid','Ash','Alcalinity of Ash'
 
 colnames(wine) <- wine_names
 
-wine
+head(wine)
 ```
 
 Part b: Checking if count of wine type matches that noted in wine_name text file
@@ -108,6 +108,7 @@ df<-data.frame(Overal_Avg = overall_avgs[2:14],
            Type_2_Avg = c2_avgs[2:14],
            Type_3_Avg = c3_avgs[2:14])
 rownames(df)<-wine_names[2:14]
+
 df
 ```
 Part e: Carry out a series of t-tests to examine whether the level of phenols differs across the three classes. Present the R output and interpret the results.
@@ -392,7 +393,6 @@ nextPalindromic2 <- function(x){
     
     while (new_num < x){
       if (length(digits)%%2==0){
-        
         half = length(digits)/2
         
         for (i in 1:length(digits)){
