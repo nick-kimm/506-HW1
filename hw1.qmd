@@ -1,7 +1,8 @@
 ---
 title: "Problem Set 1"
 author: Nicholas Kim
-format: html
+format: html:
+  embed-resources: TRUE
 
 ---
 Link to my [github](https://github.com/nick-kimm/506-HW1) repository
